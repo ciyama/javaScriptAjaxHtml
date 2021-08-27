@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercícios HTML</title>
+    <style>
+        #conteudo {
+            padding: 30px 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -12,25 +17,25 @@
         <h1>Exercícios HTML</h1>
     </head>
     <nav>
-        <a href="exercicios/teste.html">00 - teste</a>
-        <br />
-        <a href="exercicios/teste2.html">01 - teste</a>
+        <a href wm-nav="exercicios/teste.html">00 - teste</a>
+        <a href wm-nav="exercicios/teste1.html">01 - teste</a>
+        <a href wm-nav="exercicios/teste2.html">02 - teste</a>
+        <a href wm-nav="exercicios/listas.html">03 - teste</a>
     </nav>
     <section id="conteudo">
 
     </section>
     <footer>
-        <br />
         Ciyama - curso html/ajax/javaScript
     </footer>
 
     <script>
-        document.querySelectorAll('a').forEach(link => {
+        document.querySelectorAll('[wm-nav]').forEach(link => {
             link.onclick = function(e) {
                 e.preventDefault()
 
                 const conteudo = document.getElementById('conteudo')
-                fetch(link.href)
+                fetch(link.getAttribute('wm-nav'))
                     .then(resp => resp.text())
                     .then(html => conteudo.innerHTML = html)
             } 
